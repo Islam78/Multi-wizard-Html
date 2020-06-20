@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr/Demeter</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="./css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+</head>
+<body>
+<div class="container">
+    <div class="head text-center">
+        <h1>Easy Setup Wizard</h1>
+        <p> This information will let us know more about you. </p>
+    </div>
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step col-xs-3"> 
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">Step 1</a>
+            </div>
+            <div class="stepwizard-step col-xs-3"> 
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled"> Step 2</a>
+            </div>
+            <div class="stepwizard-step col-xs-3"> 
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled"> Step 3</a>
+            </div>
+        </div>
+    </div>
+    
+    <form role="form">
+        <div class="panel panel-primary setup-content" id="step-1">
+            
+            <div class="panel-body">
+                <div class="text-center">
+                    <p>Add New Photo</p>
+                </div>
+                <div class="form-group">
+                    <div class="image-cropper">
+                        <input type="file" id="imageLoader" name="imageLoader"/>
+                        <div class="error">Invalid file.  Needs to be at least 100x100 pixels.</div>
+                        <div class="clearfix">
+                        <div class="canvasCon">
+                            <canvas id="imageCanvas" width="300" height="300"></canvas>
+                            <div class="canvasScreenTop"></div>
+                            <div class="canvasScreenBottom"></div>
+                            <div class="canvasScreenLeft"></div>
+                            <div class="canvasScreenRight"></div>
+                            <div class="toolbar">
+                                <div class="instructions">Click and drag to move.  Hold shift key to scale.</div>
+                                <button class="btn " id="crop">Crop</button>
+                                <button class="btn " id="reset">reset</button>
+                            </div>
+                        </div>
+                            <div class="cropResult"><img width="100" height="100"/></div></div>
+                        <canvas id="cropCanvas" width="100" height="100"></canvas>
+                    </div>
+                    <br>
+                </div>
+                <button class="btn nextBtn pull-right" type="button">Next</button>
+            </div>
+        </div>
+        
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="control-label">You URL</label>
+                    <input id="url" maxlength="200" type="text" required="required" class="form-control" placeholder="Pleas Enter URL" />
+                    <br>
+                    <select class="form-control" id="select" >
+                        <option class="form-control"  value="0" selected> select options </option>
+                        <option class="form-control"  value="1"> option 1 </option>
+                        <option class="form-control"  value="2"> option 2 </option>
+                        <option class="form-control"  value="3"> option 3 </option>
+                    </select>
+                    <hr>
+                    <button type="reset" id="reset" class="btn btn-info" >Reset!</button>
+                </div>
+                
+                <button class="btn nextBtn pull-right" type="button">Next</button>
+            </div>
+        </div>
+        
+        
+        <div class="panel panel-primary setup-content" id="step-4">
+            <div class="panel-body">
+                <div class="form-group">
+                    <button id="download" type="button" class="btn" >Get File</button>
+                    
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-dark" >Reset Every Thing!</button>
+                
+                <button class="btn finish pull-right" type="submit">Finish!</button>
+            </div>
+        </div>
+    </form>
+</div>
+    
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./js/FileSaver.js"></script>
+    <script src="./js/main.js"></script>
+    
+</body>
+</html>
