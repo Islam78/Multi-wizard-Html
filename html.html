@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr/Demeter</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="./css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 </head>
@@ -39,23 +37,10 @@
                 </div>
                 <div class="form-group">
                     <div class="image-cropper">
-                        <input type="file" id="imageLoader" name="imageLoader"/>
-                        <div class="error">Invalid file.  Needs to be at least 100x100 pixels.</div>
-                        <div class="clearfix">
-                        <div class="canvasCon">
-                            <canvas id="imageCanvas" width="300" height="300"></canvas>
-                            <div class="canvasScreenTop"></div>
-                            <div class="canvasScreenBottom"></div>
-                            <div class="canvasScreenLeft"></div>
-                            <div class="canvasScreenRight"></div>
-                            <div class="toolbar">
-                                <div class="instructions">Click and drag to move.  Hold shift key to scale.</div>
-                                <button class="btn " id="crop">Crop</button>
-                                <button class="btn " id="reset">reset</button>
-                            </div>
-                        </div>
-                            <div class="cropResult"><img width="100" height="100"/></div></div>
-                        <canvas id="cropCanvas" width="100" height="100"></canvas>
+                        <label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input"></label>
+                        <input id="cropzee-input" type="file" accept="image/*">
+                        <canvas id="canvas1" class="line" width="500" height="500" ></canvas>              
+                        <button id="clear" class="btn clear" style="display: none;margin-top: 70px">Clear Canvas</button>
                     </div>
                     <br>
                 </div>
@@ -87,7 +72,7 @@
         <div class="panel panel-primary setup-content" id="step-4">
             <div class="panel-body">
                 <div class="form-group">
-                    <button id="download" type="button" class="btn" >Get File</button>
+                    <button id="download" type="button" style="margin-top: 150px;" class="btn" >Get File</button>
                     
                 </div>
                 <hr>
@@ -99,10 +84,17 @@
     </form>
 </div>
     
+    
+    <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./js/FileSaver.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/FileSaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0-beta.12/fabric.min.js"></script>
+    <script>
+		$(document).ready(function(){
+			$("#cropzee-input").cropzee({startSize: [85, 85, '%'],});
+		});
+    </script>
     
 </body>
 </html>
