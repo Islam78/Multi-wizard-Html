@@ -374,7 +374,7 @@ function dragStart(event) {
     dragging = true;
     dragStartLocation = getCanvas1Coordinates(event);
     takeSnapshot();  
-    console.log(dragStartLocation)
+    return dragStartLocation
 }
 function drag(event) {
     var position;
@@ -382,7 +382,6 @@ function drag(event) {
         restoreSnapshot();
         position = getCanvas1Coordinates(event);
         drawLine(position);
-        // console.log(position )
     }
     
 }
@@ -392,8 +391,7 @@ function dragStop(event) {
     restoreSnapshot();
     var dragEndtLocation = getCanvas1Coordinates(event);
     drawLine(dragEndtLocation);
-    console.log(dragEndtLocation) 
-    // return dragEndtLocation
+    return dragEndtLocation
 }
 
 function init() {
