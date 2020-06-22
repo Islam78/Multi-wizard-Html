@@ -161,7 +161,6 @@ jQuery.fn.extend({
         window.cropzeeCreateImage = function(id) {
             document.querySelector(".line").style.display = "block"
             document.querySelector(".clear").style.display = "block"
-                console.log("donnnn")
             // get croppr.js dimensions
             var dimensions = cropzeeCroppr.getValue();
             // get hidden canvas and draw cropped image onto it
@@ -171,6 +170,7 @@ jQuery.fn.extend({
             ctx.canvas.height = dimensions.height;
             var img = document.getElementsByClassName('croppr-image')[0];
             ctx.drawImage(img, dimensions.x, dimensions.y, dimensions.width, dimensions.height, 0, 0, dimensions.width, dimensions.height);
+            console.log(ctx.canvas.width)
             // draw on previewers
             for (let i = 0; i < cropzeePreviewersLength; i++) {
                 cropzeePreviewCanvasContext[i].canvas.width = dimensions.width;
@@ -250,6 +250,7 @@ jQuery.fn.extend({
                 var ctx = canvas.getContext('2d');
                 ctx.canvas.width = cropzeeCanvasWidth;
                 ctx.canvas.height = cropzeeCanvasHeight;
+                
                 var img = new Image();
                 img.src = src;
                 ctx.drawImage(img, 0, 0, cropzeeCanvasWidth, cropzeeCanvasHeight);
@@ -343,7 +344,6 @@ var canvas1,
     context,
     dragging = false,
     dragStartLocation,
-    islam,
     snapshot;
 
 
@@ -374,7 +374,7 @@ function dragStart(event) {
     dragging = true;
     dragStartLocation = getCanvas1Coordinates(event);
     takeSnapshot();  
-    return dragStartLocation
+    console.log(dragStartLocation)
 }
 function drag(event) {
     var position;
@@ -382,16 +382,18 @@ function drag(event) {
         restoreSnapshot();
         position = getCanvas1Coordinates(event);
         drawLine(position);
-        
+        // console.log(position )
     }
+    
 }
 
 function dragStop(event) {
     dragging = false;
     restoreSnapshot();
     var dragEndtLocation = getCanvas1Coordinates(event);
-    drawLine(dragEndtLocation); 
-    return dragEndtLocation
+    drawLine(dragEndtLocation);
+    console.log(dragEndtLocation) 
+    // return dragEndtLocation
 }
 
 function init() {
@@ -423,10 +425,10 @@ l.addEventListener('click', function () {
     var y1 = cropzeeCroppr.box.y1 / 1000    
     var x2 = cropzeeCroppr.box.x2 / 1000  
     var y2 = cropzeeCroppr.box.y2 / 1000  
-    var linex1 = dragStart(event).x  / 1000
+    var linex1 = dragStart(event).x / 1000
     var liney1 = dragStart(event).y / 1000
-    var linex2 = dragStop(event).x / 1000  
-    var liney2 = dragStop(event).y / 1000 
+    var linex2 = dragStop(event).x  / 1000  
+    var liney2 = dragStop(event).y  / 1000 
     var blob = new Blob([ `
     videoURL = "${input}" 
     videotype = ${strUser}

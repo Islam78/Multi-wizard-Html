@@ -115,7 +115,7 @@ form .instructions
     padding: 0 !important;
 }
 .image-previewer{
-    width: 300px;
+    width: 350px;
     height: 250px;
     display: none;
 }
@@ -134,9 +134,9 @@ form .instructions
 
 .line{
     position: absolute;
-    width: 390px;
+    width: 350px;
 
-    height: 355px;
+    height: 250px;
     top: 248px;
     display: none ;
 }
