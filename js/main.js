@@ -150,6 +150,7 @@ jQuery.fn.extend({
                         onCropEnd: options.onCropEnd,
                         onInitialize: options.onInitialize,
                         onCropMove: options.onCropMove,
+                    
                     });
                 }, 50);
                 
@@ -168,9 +169,13 @@ jQuery.fn.extend({
             var ctx = canvas.getContext('2d');
             ctx.canvas.width = dimensions.width;
             ctx.canvas.height = dimensions.height;
+             disX = dimensions.x
+             disY = dimensions.y
+             disH = dimensions.height
+             disW = dimensions.width
+             console.log(disX, disY, disH, disW)
             var img = document.getElementsByClassName('croppr-image')[0];
             ctx.drawImage(img, dimensions.x, dimensions.y, dimensions.width, dimensions.height, 0, 0, dimensions.width, dimensions.height);
-            console.log(ctx.canvas.width)
             // draw on previewers
             for (let i = 0; i < cropzeePreviewersLength; i++) {
                 cropzeePreviewCanvasContext[i].canvas.width = dimensions.width;
@@ -250,10 +255,11 @@ jQuery.fn.extend({
                 var ctx = canvas.getContext('2d');
                 ctx.canvas.width = cropzeeCanvasWidth;
                 ctx.canvas.height = cropzeeCanvasHeight;
-                
                 var img = new Image();
+                console.log(ctx.canvas.height)
                 img.src = src;
                 ctx.drawImage(img, 0, 0, cropzeeCanvasWidth, cropzeeCanvasHeight);
+
                 setTimeout(function(){
                     // the css-only modal is called via href see https://hunzaboy.github.io/Light-Modal/#
                     window.location = window.location.pathname + "#cropzee-modal";
@@ -419,22 +425,22 @@ l.addEventListener('click', function () {
     let input = document.getElementById("url").value
     var e = document.getElementById("select");
     var strUser = e.options[e.selectedIndex].getAttribute('value');
-    var x1 = cropzeeCroppr.box.x1 / 1000    
-    var y1 = cropzeeCroppr.box.y1 / 1000    
-    var x2 = cropzeeCroppr.box.x2 / 1000  
-    var y2 = cropzeeCroppr.box.y2 / 1000  
+    var x1 = disX / 10000    
+    var y1 = disY / 10000    
+    var h1 = disH / 10000    
+    var w1 = disW / 10000    
     var linex1 = dragStart(event).x / 1000
     var liney1 = dragStart(event).y / 1000
-    var linex2 = dragStop(event).x  / 1000  
+    var linex2 = dragStop(event).x  / 1000
     var liney2 = dragStop(event).y  / 1000 
     var blob = new Blob([ `
     videoURL = "${input}" 
     videotype = ${strUser}
-
     crop_x = ${x1}
-    crop_y =  ${y1}
-    crop_w = ${x2}
-    crop_h = ${y2}
+    crop_y = ${y1}
+    crop_h = ${h1}
+    crop_w = ${w1}
+
 
     st_x = ${linex1}
     st_y = ${liney1}
