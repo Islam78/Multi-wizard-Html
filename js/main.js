@@ -234,7 +234,6 @@ jQuery.fn.extend({
                     + '<!-- light modal footer -->'
                     + '<div class="light-modal-footer" style="justify-content: space-between;">'
                         + '<div onclick="closeModal()" class="light-modal-close-btn" style="cursor: pointer;" aria-label="close">Cancel</div>'
-                        + '<div onclick="cropzeeRotateImage(`' + id + '`);" class="light-modal-close-btn" style="cursor: pointer;">Rotate 90deg</div>'
                         + '<div onclick="cropzeeCreateImage(`' + id + '`);" class="light-modal-close-btn" style="cursor: pointer;">Done</div>'
                     + '</div>'
                 + '</div>' 
@@ -424,18 +423,25 @@ l.addEventListener('click', function () {
     var y1 = cropzeeCroppr.box.y1 / 100    
     var x2 = cropzeeCroppr.box.x2 / 1000  
     var y2 = cropzeeCroppr.box.y2 / 1000  
-    var linex = dragStart(event).x  / 1000 +", " + dragStart(event).y / 1000
-    var liney = dragStop(event).x / 1000  + ", " + dragStop(event).y / 1000 
-    var blob = new Blob([ `Hello Sir! 
-    The URL Is: ${input} 
-    videotype: ${strUser}
-    ------------------------------
-    the Image:
-    ${x1}, ${y1}, ${x2}, ${y2}
-    ---------------------------
-    ths Line:
-    (${linex}) (${liney})
-    Thank you.` ], {type: "text/plain;charset=utf-8"});
+    var linex1 = dragStart(event).x  / 1000
+    var liney1 = dragStart(event).y / 1000
+    var linex2 = dragStop(event).x / 1000  
+    var liney2 = dragStop(event).y / 1000 
+    var blob = new Blob([ `
+    videoURL = "${input}" 
+    videotype = ${strUser}
+
+    crop_x = ${x1}
+    crop_y =  ${y1}
+    crop_w = ${x2}
+    crop_h = ${y2}
+
+    st_x = ${linex1}
+    st_y = ${liney1}
+    ed_x = ${linex2}
+    ed_y = ${liney2}
+
+` ], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "world.txt");
     console.log(strUser)
 })
