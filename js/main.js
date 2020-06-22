@@ -419,8 +419,8 @@ l.addEventListener('click', function () {
     let input = document.getElementById("url").value
     var e = document.getElementById("select");
     var strUser = e.options[e.selectedIndex].getAttribute('value');
-    var x1 = cropzeeCroppr.box.x1 / 100    
-    var y1 = cropzeeCroppr.box.y1 / 100    
+    var x1 = cropzeeCroppr.box.x1 / 1000    
+    var y1 = cropzeeCroppr.box.y1 / 1000    
     var x2 = cropzeeCroppr.box.x2 / 1000  
     var y2 = cropzeeCroppr.box.y2 / 1000  
     var linex1 = dragStart(event).x  / 1000

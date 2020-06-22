@@ -74,8 +74,11 @@ body {
     line-height: 1.428571429;
     border-radius: 15px;
 }
-form ,.form-group{
+form {
     min-height: 350px;
+}
+.form-group{
+    min-height: 400px;
 }
 form #image{
     display: none;
