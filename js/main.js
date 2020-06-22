@@ -419,7 +419,7 @@ var l = document.getElementById("download")
 l.addEventListener('click', function () {
     let input = document.getElementById("url").value
     var e = document.getElementById("select");
-    var strUser = e.options[e.selectedIndex].text;
+    var strUser = e.options[e.selectedIndex].getAttribute('value');
     var x1 = cropzeeCroppr.box.x1 / 100    
     var y1 = cropzeeCroppr.box.y1 / 100    
     var x2 = cropzeeCroppr.box.x2 / 1000  
@@ -428,7 +428,7 @@ l.addEventListener('click', function () {
     var liney = dragStop(event).x / 1000  + ", " + dragStop(event).y / 1000 
     var blob = new Blob([ `Hello Sir! 
     The URL Is: ${input} 
-    The Select Box Is: ${strUser}
+    videotype: ${strUser}
     ------------------------------
     the Image:
     ${x1}, ${y1}, ${x2}, ${y2}
